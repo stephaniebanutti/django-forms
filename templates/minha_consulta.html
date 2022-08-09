@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<p>Sua origem é: {{ form.origem.value }}</p> <!-- Pega o valor que esta no form -->
+<p>Seu destino é: {{ form.destino.value }}</p> <!-- Os nomes são de acordo com o que foi colocado lá na class ao criar o form-->
+<p>Sua data de ida é: {{ form.data_ida.value }}</p> <!--O complemento .value, iinforma que quero apenas os valores dos inputs-->
+<p>Sua data de volta é: {{ form.data_volta.value }}</p>
+<p>Sua data de volta é: {{ form.data_volta.value }}</p>
+<p>Sua classe de vôo é: {{ form.classe_viagem.value }}</p>
+<p>Email: {{ pessoa_forms.email.value }}</p>
+<p>Observações: {{ form.observacoes.value }}</p>
+<p>Data da pesquisa: {{ form.data_pesquisa.value }}</p>
+
+{% endblock%}

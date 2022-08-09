@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+
+
+<section class=" container col-5">
+    <form action="{% url 'minha_consulta' %}" method="post">
+        {% csrf_token %}
+        {% for field in form.visible_fields %} <!-- Significa: para cada campo visivel -->
+        <div class="form-group"> <!-- div que agrupa as configs -->
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label> <!-- no for é criado o id dessa label, sendo id_nome_do_campo-->
+            {{ field|add_class:'form-control' }} <!-- Inputs a serem gerados, de acordo com as labels, logo, atribuido uma configuração de layout pata todos os campos atraves do django-widget -->
+        </div>
+        {% for error in field.errors %}
+        <section class="alert alert-danger" role="alert">
+            {{ field.errors }}
+        </section>
+        {% endfor %}
+        {% endfor %}
+
+        {% for field in pessoa_form.visible_fields %} <!-- Significa: para cada campo visivel -->
+        <div class="form-group"> <!-- div que agrupa as configs -->
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label> <!-- no for é criado o id dessa label, sendo id_nome_do_campo-->
+            {{ field|add_class:'form-control' }} <!-- Inputs a serem gerados, de acordo com as labels, logo, atribuido uma configuração de layout pata todos os campos atraves do django-widget -->
+        </div>
+        {% endfor %}
+        <input type="submit" value="Enviar" class="btn btn-success">
+    </form>
+</section>
+
+{% endblock %} 
